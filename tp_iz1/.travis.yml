@@ -1,0 +1,10 @@
+dist: focal
+sudo: false
+
+language: c++
+
+os: linux
+
+compiler:
+  - gcc
+  - clang
