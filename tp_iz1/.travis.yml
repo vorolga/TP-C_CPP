@@ -7,4 +7,3 @@ os: linux
 
 compiler:
   - gcc
-  - clang
