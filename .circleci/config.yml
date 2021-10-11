@@ -40,7 +40,7 @@ jobs:
           command: sudo apt-get install -y gcovr
       - run:
           name: Install clang-format
-          command: sudo apt install clang-format
+          command: sudo apt install -y clang-format
       - run:
           name: Make
           command: |
@@ -52,8 +52,7 @@ jobs:
           name: gcovr
           command: |
             mkdir tp_iz1/coverage
-            cd tp_iz1
-            gcovr -r . --html -o coverage/coverage.html --html-details
+            gcovr -r tp_iz1/ --html -o tp_iz1/coverage/coverage.html --html-details
             cat tp_iz1/coverage/coverage.html
       - run:
           name: Linter
