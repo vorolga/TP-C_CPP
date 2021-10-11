@@ -64,7 +64,7 @@ jobs:
             cd ../include
             clang-format -i -style=WebKit *.h
             cd ../tests
-            clang-format -i -style=WebKit *.cpp *.h
+            clang-format -i -style=WebKit *.cpp
       - run:
           name: Linter
           command: |
