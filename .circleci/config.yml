@@ -47,7 +47,9 @@ jobs:
             make
       - run:
           name: gcovr
-          command: gcovr -r . --html -o coverage.html --html-details
+          command: |
+          cd ..
+          gcovr -r . --html -o coverage.html --html-details
       - run:
           name: Linter
           command: |
