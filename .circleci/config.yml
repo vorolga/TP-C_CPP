@@ -6,11 +6,14 @@ jobs:
 
     steps:
       - run:
+          name: Installing SUDO
+          command: 'sudo apt-get update && sudo apt-get install -y sudo && sudo rm -rf /var/lib/apt/lists/*'
+      - run:
           name: Installing GCC
-          command: 'apt-get update && apt-get install -y gcc g++'
+          command: 'sudo apt-get update && sudo apt-get install -y gcc g++'
       - run:
           name: Install CMAKE
-          command: 'apt-get update && sudo apt-get install -y cmake'
+          command: 'sudo apt-get update && sudo apt-get install -y cmake'
       - run:
           name: Creating Build Files
           command: 'cmake -H. -Bbuild'
