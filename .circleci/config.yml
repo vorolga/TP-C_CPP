@@ -31,7 +31,11 @@ jobs:
           command: sudo apt-get install -y cppcheck
       - run:
           name: Linter
-          command: cd tp_iz1/src && cppcheck *.c
+          command:
+          ls
+          cd
+          ls
+          cd tp_iz1/src && cppcheck *.c
       - run:
           name: Make
           command: |
