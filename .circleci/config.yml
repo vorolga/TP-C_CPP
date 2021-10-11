@@ -45,18 +45,15 @@ jobs:
           name: Install clang-tidy
           command: sudo apt install -y clang-tidy
       - run:
-          name: Install cpplint
-          command: |
-            sudo apt install python3-pip
-            pip install --upgrade pip
-            sudo pip3 install pytest-runner
-            sudo pip install cpplint
+          name: Install scan-build
+          command: sudo apt install clang-tools
       - run:
-          name: Make
+          name: Make + scan-build
           command: |
             mkdir tp_iz1/build
             cd tp_iz1/build
             cmake ../
+            scan-build -o . make -j4
             make
       - run:
           name: gcovr
@@ -75,10 +72,6 @@ jobs:
             clang-format -i -style=WebKit *.h
             cd ../tests
             clang-format -i -style=WebKit *.cpp
-      - run:
-          name: cpplint
-          command: |
-            cpplint ~/tp_iz1/*.* ~/to_iz1/*/*.*
       - run:
           name: Linter
           command: |
