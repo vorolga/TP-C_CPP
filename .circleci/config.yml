@@ -42,20 +42,11 @@ jobs:
           name: Install clang-format
           command: sudo apt install -y clang-format
       - run:
-          name: Install clang-tidy
-          command: sudo apt install -y clang-tidy
-      - run:
-          name: Install scan-build
-          command: |
-            sudo apt update
-            sudo apt install -y clang-tools
-      - run:
-          name: Make + scan-build
+          name: Make
           command: |
             mkdir tp_iz1/build
             cd tp_iz1/build
             cmake ../
-            scan-build -o . make -j4
             make
       - run:
           name: gcovr
