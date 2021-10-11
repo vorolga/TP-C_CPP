@@ -48,7 +48,7 @@ jobs:
       - run:
           name: gcovr
           command: |
-            mkdir tp_iz1/coverage
+            touch tp_iz1/coverage
             gcovr > tp_iz1/coverage
       - run:
           name: Linter
