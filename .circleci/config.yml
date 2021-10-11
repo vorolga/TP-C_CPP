@@ -70,7 +70,7 @@ jobs:
             clang-format -i -style=WebKit *.cpp
       - run:
           name: clang-tidy
-          ommand: |
+          command: |
             cd tp_iz1/tests
             clang-tidy geometry_test.cpp -checks=-*,clang-analyzer-*
       - run:
