@@ -9,7 +9,7 @@ jobs:
       image: ubuntu-1604:202007-01
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: checkout
       - run:
           name: Installing GCC
           command: |
