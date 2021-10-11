@@ -53,4 +53,4 @@ jobs:
             ./geometry_test
       - run:
           name: Valgrind
-          command: valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometru_test
+          command: valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test
