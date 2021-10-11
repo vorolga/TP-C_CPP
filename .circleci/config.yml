@@ -55,17 +55,16 @@ jobs:
             gcovr -r tp_iz1/ --html -o tp_iz1/coverage/coverage.html --html-details
             cat tp_iz1/coverage/coverage.html
       - store_artifacts:
-          ls -la
           path: tp_iz1/coverage/
       - run:
           name: clang-format
           command: |
             cd tp_iz1/src
-            clang-format -i -style=WebKit *.cpp *.h *.c
+            clang-format -i -style=WebKit *.c
             cd ../include
-            clang-format -i -style=WebKit *.cpp *.h *.c
+            clang-format -i -style=WebKit *.h
             cd ../tests
-            clang-format -i -style=WebKit *.cpp *.h *.c
+            clang-format -i -style=WebKit *.cpp *.h
       - run:
           name: Linter
           command: |
