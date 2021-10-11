@@ -46,7 +46,9 @@ jobs:
           command: sudo apt install -y clang-tidy
       - run:
           name: Install cpplint
-          command: sudo pip install cpplint
+          command: |
+          sudo apt install python3-pip
+          sudo pip install cpplint
       - run:
           name: Make
           command: |
