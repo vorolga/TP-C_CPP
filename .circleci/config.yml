@@ -66,4 +66,3 @@ jobs:
 
       - store_artifacts:
           path: tp_iz1/coverage.html
-          destination: coverage_result
