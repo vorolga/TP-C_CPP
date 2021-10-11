@@ -55,7 +55,7 @@ jobs:
             gcovr -r tp_iz1/ --html -o tp_iz1/coverage/coverage.html --html-details
             cat tp_iz1/coverage/coverage.html
       - store_artifacts:
-          path: tp_iz1/coverage
+          path: tp_iz1/coverage/
       - run:
           name: Linter
           command: |
