@@ -25,7 +25,7 @@ jobs:
             cd /usr/src/gtest
             sudo cmake .
             sudo make
-            sudo cp /usr/src/gtest/lib/*.a /usr/lib/x86_64-linux-gnu
+            sudo cp -R /usr/src/gtest/*.a /usr/lib/x86_64-linux-gnu
       - run:
           name: Install CppCheck
           command: sudo apt-get install -y cppcheck
