@@ -1,4 +1,8 @@
 version: 2.1
+on:
+  push:
+    branches:
+      - hw-1
 jobs:
   build:
     machine:
