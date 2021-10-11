@@ -59,6 +59,7 @@ jobs:
       - run:
           name: clang-format
           command: |
+            ls -la
             cd ../src
             clang-format -i -style=WebKit *.cpp *.h *.c
             cd ../include
