@@ -46,7 +46,7 @@ jobs:
           command: |
             mkdir tp_iz1/build
             cd tp_iz1/build
-            cmake ../ -DCMAKE_BUILD_TYPE=ASAN
+            cmake ../
             make
       - run:
           name: gcovr
