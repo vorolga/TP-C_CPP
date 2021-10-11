@@ -42,6 +42,11 @@ jobs:
             cmake ../
             make
       - run:
+          name: Linter
+          command: |
+            cd tp_iz1/src
+            cppcheck *.c
+      - run:
           name: Test
           command: |
             cd tp_iz1/build
