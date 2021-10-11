@@ -52,7 +52,8 @@ jobs:
           name: gcovr
           command: |
             mkdir tp_iz1/coverage
-            gcovr -r tp_iz1/ --html -o tp_iz1/coverage/coverage.html --html-details
+            cd tp_iz1
+            gcovr -r . --html -o coverage/coverage.html --html-details
             cat tp_iz1/coverage/coverage.html
       - run:
           name: Linter
