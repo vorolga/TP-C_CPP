@@ -66,11 +66,6 @@ jobs:
           destination: artifact-file
       - store_artifacts:
           path: /tmp/artifacts
-      - run:
-          # `curl` gets all artifact details for a build
-          # then, the result is piped into `grep` to extract the URLs.
-          # finally, `wget` is used to download the the artifacts to the current directory in your terminal.
-
-          curl -H "Circle-Token: $48552c96d57709cf04b9256822f2e4cab512b53f" https://circleci.com/api/v1.1/project/:vcs-type/:username/:project/:build_num/artifacts \
-                                   | grep -o 'https://[^"]*' \
-                                   | wget --verbose --header "Circle-Token: $48552c96d57709cf04b9256822f2e4cab512b53f" --input-file -
+      - cypress/run:
+          store_artifacts: true
+      
