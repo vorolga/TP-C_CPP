@@ -12,7 +12,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall --coverage")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE 1)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0 -Wall --coverage")
 set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
-set (CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address")
 
 # AddressSanitize
 set(CMAKE_C_FLAGS_ASAN
