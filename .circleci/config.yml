@@ -19,7 +19,7 @@ jobs:
           command: 'cmake -H. -Bbuild'
       - run:
           name: Creating Binary Files
-          command: 'cmake --build build'
+          command: 'cd ../tp_iz1 && cmake --build build'
       - run:
           name: Point Unit Testing
           command: 'cd ../tp_iz1/cmake-build-debug && ./geometry_test'
