@@ -36,12 +36,18 @@ jobs:
           name: Install CppCheck
           command: sudo apt-get install -y cppcheck
       - run:
+          name: Install gcovr
+          command: sudo apt-get install -y gcovr
+      - run:
           name: Make
           command: |
             mkdir tp_iz1/build
             cd tp_iz1/build
             cmake ../
             make
+      - run:
+          name: gcovr
+          command: gcovr -r . --html -o coverage.html --html-details
       - run:
           name: Linter
           command: |
@@ -57,5 +63,5 @@ jobs:
           command: valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test
 
       - store_artifacts:
-          path: cover
+          path: tp_iz1/build/coverage.html
           destination: coverage_result
