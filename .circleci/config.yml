@@ -42,6 +42,9 @@ jobs:
           name: Install clang-format
           command: sudo apt install -y clang-format
       - run:
+          name: Install clang-tidy
+          command: sudo apt install -y clang-tidy
+      - run:
           name: Make
           command: |
             mkdir tp_iz1/build
@@ -65,6 +68,10 @@ jobs:
             clang-format -i -style=WebKit *.h
             cd ../tests
             clang-format -i -style=WebKit *.cpp
+      name: clang-tidy
+        command: |
+          cd tp_iz1/tests
+          clang-tidy geometry_test.cpp -checks=-*,clang-analyzer-*
       - run:
           name: Linter
           command: |
