@@ -8,7 +8,7 @@ set(LIB_HEADERS_FILES include/geometry.h tests/geometry_test.cpp)
 
 add_library(geometry STATIC ${LIB_SOURCE_FILES} ${LIB_HEADERS_FILES})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall --coverage -fno-omit-frame-pointer -fsanitize=address -fPIC -pie")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall --coverage -fno-omit-frame-pointer -fsanitize=address -fPIE -pie")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE 1)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0 -Wall --coverage -fno-omit-frame-pointer -fsanitize=address -fPIE -pie")
 set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
