@@ -48,8 +48,8 @@ jobs:
           name: Install cpplint
           command: |
             sudo apt install python3-pip
-            sudo pip3 install pytest-runner
             pip install --upgrade pip
+            sudo pip3 install pytest-runner
             sudo pip install cpplint
       - run:
           name: Make
