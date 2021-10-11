@@ -6,12 +6,6 @@ jobs:
 
     steps:
       - run:
-          name: Installing SUDO
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y sudo
-            sudo rm -rf /var/lib/apt/lists/*
-      - run:
           name: Installing GCC
           command: |
             sudo apt-get update
@@ -28,7 +22,7 @@ jobs:
           name: Install GoogleTests
           command: |
             sudo apt-get install -y googletest
-            sudo apt-get install libgtest-dev
+            sudo apt-get install -y libgtest-dev
       - run:
           name: Install CppCheck
           command: sudo apt-get install -y cppcheck
