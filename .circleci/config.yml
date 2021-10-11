@@ -55,14 +55,8 @@ jobs:
       - run:
           name: Valgrind
           command: valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test
-      - run:
-          name: Creating Artifacts
-          command: |
-            echo "my artifact file" > /tmp/art-1;
-            mkdir /tmp/artifacts;
-            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+      - run: mix coveralls.html
+
       - store_artifacts:
-          path: build
-          destination: /tmp/art-1
-      - store_artifacts:
-          path: /tmp/artifacts
+          path: cover
+          destination: coverage_result
