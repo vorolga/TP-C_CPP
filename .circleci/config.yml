@@ -46,7 +46,9 @@ jobs:
           command: sudo apt install -y clang-tidy
       - run:
           name: Install scan-build
-          command: sudo apt install -y clang-tools
+          command: |
+            sudo apt update
+            sudo apt install -y clang-tools
       - run:
           name: Make + scan-build
           command: |
