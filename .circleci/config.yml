@@ -68,10 +68,11 @@ jobs:
             clang-format -i -style=WebKit *.h
             cd ../tests
             clang-format -i -style=WebKit *.cpp
-      name: clang-tidy
-        command: |
-          cd tp_iz1/tests
-          clang-tidy geometry_test.cpp -checks=-*,clang-analyzer-*
+      - run:
+          name: clang-tidy
+            command: |
+              cd tp_iz1/tests
+              clang-tidy geometry_test.cpp -checks=-*,clang-analyzer-*
       - run:
           name: Linter
           command: |
