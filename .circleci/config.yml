@@ -35,11 +35,6 @@ jobs:
           name: Install CppCheck
           command: sudo apt-get install -y cppcheck
       - run:
-          name: Linter
-          command: |
-            cd ./tp_iz1/src
-            cppcheck *.c
-      - run:
           name: Make
           command: |
             mkdir tp_iz1/build
