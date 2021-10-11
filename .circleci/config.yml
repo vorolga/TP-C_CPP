@@ -19,9 +19,15 @@ jobs:
       - run:
           name: Install CMAKE
           command: |
-            sudo apt-get purge cmake
-            sudo apt-get update
-            sudo apt-get install -y cmake
+            sudo apt remove --purge --auto-remove cmake
+            mkdir ~/temp
+            cd ~/temp
+            wget https://cmake.org/files/v3.16/	cmake-3.16.0-rc1-Linux-x86_64.tar.gz
+            tar -xzvf cmake-3.16.0-rc1-Linux-x86_64.tar.gz
+            cd 	cmake-3.16.0-rc1-Linux-x86_64
+            ./bootstrap
+            make -j$(nproc)
+            sudo make install
       - run:
           name: Install Valgrind
           command: sudo apt-get install -y valgrind
