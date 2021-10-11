@@ -48,8 +48,8 @@ jobs:
       - run:
           name: gcovr
           command: |
-            touch tp_iz1/coverage
-            gcovr > tp_iz1/coverage
+            cd tp_iz1
+            gcovr -r . --html -o coverage html --html-details
       - run:
           name: Linter
           command: |
@@ -65,4 +65,5 @@ jobs:
           command: valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test
 
       - store_artifacts:
-          path: tp_iz1/coverage
+          path: tp_iz1/coverage.html
+          destination: coverage_result
