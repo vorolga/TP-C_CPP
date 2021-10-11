@@ -57,6 +57,15 @@ jobs:
       - store_artifacts:
           path: tp_iz1/coverage/
       - run:
+          name: clang-format
+          command: |
+            cd tp_iz1/src
+            clang-format -i -style=WebKit *.cpp *.h *.c
+            cd tp_iz1/include
+            clang-format -i -style=WebKit *.cpp *.h *.c
+            cd tp_iz1/tests
+            clang-format -i -style=WebKit *.cpp *.h *.c
+      - run:
           name: Linter
           command: |
             cd tp_iz1/src
