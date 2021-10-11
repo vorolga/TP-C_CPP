@@ -48,8 +48,8 @@ jobs:
       - run:
           name: gcovr
           command: |
-          cd tp_iz1/build
-          gcovr -r . --html -o coverage.html --html-details
+            cd tp_iz1/build
+            gcovr -r . --html -o coverage.html --html-details
       - run:
           name: Linter
           command: |
