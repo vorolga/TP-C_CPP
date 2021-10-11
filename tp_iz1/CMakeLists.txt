@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.0)
+cmake_minimum_required(VERSION 3.5.1)
 project(tp_iz1 C CXX)
 
 set(CMAKE_C_STANDARD 99)
