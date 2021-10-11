@@ -42,11 +42,11 @@ jobs:
           name: Install clang-format
           command: sudo apt install -y clang-format
       - run:
-          name: Make
+          name: Make + AddressSanitizer
           command: |
             mkdir tp_iz1/build
             cd tp_iz1/build
-            cmake ../
+            cmake ../ -DCMAKE_BUILD_TYPE=ASAN
             make
       - run:
           name: gcovr
