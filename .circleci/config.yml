@@ -62,7 +62,7 @@ jobs:
             mkdir /tmp/artifacts;
             echo "my artifact files in a dir" > /tmp/artifacts/art-2;
       - store_artifacts:
-          path: ./build
+          path: build
           destination: /tmp/art-1
       - store_artifacts:
           path: /tmp/artifacts
