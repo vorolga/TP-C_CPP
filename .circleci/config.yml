@@ -45,6 +45,9 @@ jobs:
           name: Install clang-tidy
           command: sudo apt install -y clang-tidy
       - run:
+          name: Install cpplint
+          command: sudo pip install cpplint
+      - run:
           name: Make
           command: |
             mkdir tp_iz1/build
@@ -69,10 +72,9 @@ jobs:
             cd ../tests
             clang-format -i -style=WebKit *.cpp
       - run:
-          name: clang-tidy
+          name: cpplint
           command: |
-            cd tp_iz1/tests
-            clang-tidy geometry_test.cpp -checks=-*,clang-analyzer-*
+            cpplint ~/tp_iz1/*.* ~/to_iz1/*/*.*
       - run:
           name: Linter
           command: |
