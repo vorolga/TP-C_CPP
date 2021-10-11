@@ -32,10 +32,8 @@ jobs:
       - run:
           name: Linter
           command: |
-            ls
-            cd
-            ls
-            cd tp_iz1/src && cppcheck *.c
+            cd /TP-C_PP/tp_iz1/src
+            cppcheck *.c
       - run:
           name: Make
           command: |
