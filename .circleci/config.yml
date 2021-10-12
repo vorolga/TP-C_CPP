@@ -83,6 +83,6 @@ jobs:
       - run:
           name: Valgrind
           command: |
-            valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test
-            valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test 3 4 5
+            valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test || set +o pipefail
+            valgrind --tool=memcheck --leak-check=yes tp_iz1/build/tp_iz1 3 4 5 || set +o pipefail
 
