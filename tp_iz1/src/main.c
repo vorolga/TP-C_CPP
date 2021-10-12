@@ -8,6 +8,7 @@ int main(int argc, char* argv[])
 
 
     if (argc > 1) {
+        int* f= (int*)malloc(5*sizeof(int));
         triangle.a = strtod(argv[1], NULL);
         triangle.b = strtod(argv[2], NULL);
         triangle.c = strtod(argv[3], NULL);
