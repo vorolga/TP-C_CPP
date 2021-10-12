@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5.1)
 project(tp_iz1 C CXX)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 23)
 
 set(LIB_SOURCE_FILES src/geometry.c)
 set(LIB_HEADERS_FILES include/geometry.h tests/geometry_test.cpp)
