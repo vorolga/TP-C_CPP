@@ -1,5 +1,6 @@
 #include "../include/geometry.h"
 #include <math.h>
+#include <stdio.h>
 
 void read_triangle_sides(struct Triangle* triangle) {
     printf("Введите стороны треугольника\n");

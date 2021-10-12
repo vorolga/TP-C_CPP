@@ -1,5 +1,6 @@
 #include "../include/geometry.h"
 #include <stdio.h>
+
 int main()
 {
     struct Triangle triangle;

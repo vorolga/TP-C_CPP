@@ -38,9 +38,7 @@ jobs:
       - run:
           name: Install gcovr
           command: |
-            sudo apt-get install -y python
-            sudo apt-get install -y python3
-            sudo apt-get install -y gcovr
+            sudo pip install git+https://github.com/gcovr/gcovr.git
       - run:
           name: Install clang-format
           command: sudo apt install -y clang-format
