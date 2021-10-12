@@ -42,7 +42,7 @@ jobs:
           name: Install clang-format
           command: sudo apt install -y clang-format
       - run:
-          name: Make + AddressSanitizer
+          name: Make
           command: |
             mkdir tp_iz1/build
             cd tp_iz1/build
@@ -52,8 +52,9 @@ jobs:
           name: gcovr
           command: |
             mkdir tp_iz1/coverage
-            gcovr -r tp_iz1/ --html -o tp_iz1/coverage/coverage.html --html-details
-            cat tp_iz1/coverage/coverage.html
+            cd tp_iz1
+            gcovr -r . --html -o coverage/coverage.html --html-details
+            cat coverage/coverage.html
       - store_artifacts:
           path: tp_iz1/coverage/
       - run:
