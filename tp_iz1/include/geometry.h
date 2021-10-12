@@ -1,6 +1,10 @@
 #ifndef TP_IZ1_GEOMETRY_H
 #define TP_IZ1_GEOMETRY_H
 
+#include <math.h>
+#include <stdio.h>
+#include <assert.h>
+
 struct Circle {
     double radius;
 };
