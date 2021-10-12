@@ -19,10 +19,6 @@ set(SOURCE main.c)
 
 include_directories("tp_iz1/include/")
 
-set(SOURCE_LIB tp_iz1/src/geometry.c)
-
-add_library(libs STATIC ${SOURCE_LIB})
-
 add_executable(tp_iz1 src/main.c)
 target_link_libraries(tp_iz1 geometry m gcov -fprofile-arcs -ftest-coverage -fPIC)
 

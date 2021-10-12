@@ -1,6 +1,7 @@
 #include "geometry.h"
 
 void read_triangle_sides(struct Triangle* triangle) {
+
     printf("Введите стороны треугольника\n");
     assert(scanf("%lf", &triangle->a) == 1);
     assert(scanf("%lf", &triangle->b) == 1);
