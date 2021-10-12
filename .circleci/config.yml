@@ -74,7 +74,7 @@ jobs:
           name: Linter
           command: |
             cd tp_iz1/src
-            cppcheck --inconclusive --enable=all --language=c
+            cppcheck ./ --inconclusive --enable=all --language=c --suppress=missingIncludeSystem
       - run:
           name: Test
           command: |
