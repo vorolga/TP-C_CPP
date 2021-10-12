@@ -8,9 +8,9 @@ set(LIB_HEADERS_FILES include/geometry.h tests/geometry_test.cpp)
 
 add_library(geometry STATIC ${LIB_SOURCE_FILES} ${LIB_HEADERS_FILES})
 
-set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage -fPIC")
+set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage -fPIC -Werror -Wpedantic")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE 1)
-set(CMAKE_C_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage -fPIC")
+set(CMAKE_C_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage -fPIC -Werror -Wpedantic")
 set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
 
 add_executable(tp_iz1 src/main.c)
