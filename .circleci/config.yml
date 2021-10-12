@@ -53,7 +53,7 @@ jobs:
           command: |
             mkdir tp_iz1/coverage
             cd tp_iz1
-            gcovr -r . --html -o coverage/coverage.html --html-details
+            gcovr -r . --html -o coverage/coverage.html
             cat coverage/coverage.html
       - store_artifacts:
           path: tp_iz1/coverage/
