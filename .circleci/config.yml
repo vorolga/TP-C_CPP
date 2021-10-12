@@ -56,8 +56,6 @@ jobs:
             mkdir coverage
             cmake -DCMAKE_BUILD_TYPE=PROFILE ../
             make VERBOSE=1
-            ./tp_iz1
-            ./geometry_test
             gcovr -r ../ --html -o coverage/coverage.html --html-details
       - store_artifacts:
           path: tp_iz1/build/coverage/
