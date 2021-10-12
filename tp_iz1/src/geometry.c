@@ -1,6 +1,6 @@
 #include "../include/geometry.h"
 
-int read_triangle_sides(struct Triangle* triangle) {
+void read_triangle_sides(struct Triangle* triangle) {
     printf("Введите стороны треугольника\n");
     assert(scanf("%lf", &triangle->a) == 1);
     assert(scanf("%lf", &triangle->b) == 1);
@@ -8,7 +8,6 @@ int read_triangle_sides(struct Triangle* triangle) {
 
     //Проверка существования треугольника
     assert(triangle->a + triangle->b > triangle->c && triangle->a + triangle->c > triangle->b && triangle->c + triangle->b > triangle->a);
-    return 1;
 }
 
 double find_circle_radius(double a, double b, double c)
