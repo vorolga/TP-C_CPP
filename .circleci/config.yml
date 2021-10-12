@@ -37,7 +37,10 @@ jobs:
           command: sudo apt-get install -y cppcheck
       - run:
           name: Install gcovr
-          command: sudo apt-get install -y gcovr
+          command:
+            sudo apt-get install -y python
+            sudo apt-get install -y python3
+            sudo apt-get install -y gcovr
       - run:
           name: Install clang-format
           command: sudo apt install -y clang-format
@@ -53,7 +56,7 @@ jobs:
           command: |
             mkdir tp_iz1/coverage
             cd tp_iz1
-            gcovr -r . --html -o coverage/coverage.html
+            gcovr -r . --html -o coverage/coverage.html --html-details
             cat coverage/coverage.html
       - store_artifacts:
           path: tp_iz1/coverage/
