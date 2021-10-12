@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Install gcovr
           command: |
-            sudo pip install git+https://github.com/gcovr/gcovr.git
+            sudo apt-get install -y gcovr
       - run:
           name: Install clang-format
           command: sudo apt install -y clang-format
@@ -53,11 +53,14 @@ jobs:
           name: gcovr
           command: |
             mkdir tp_iz1/coverage
-            cd tp_iz1
-            gcovr -r . --html -o coverage/coverage.html --html-details
-            cat coverage/coverage.html
+            cd tp_iz1/build
+            cmake -DCMAKE_BUILD_TYPE=PROFILE ../
+            make VERBOSE=1
+            ./tp_iz1
+            ./geometry_test
+            gcovr -r ../ --html -o coverage/coverage.html --html-details
       - store_artifacts:
-          path: tp_iz1/coverage/
+          path: tp_iz1/build/coverage/
       - run:
           name: clang-format
           command: |
