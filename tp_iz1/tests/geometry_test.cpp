@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 extern "C" {
-#include "../include/geometry.h"
+#include "geometry.h"
 }
 
 TEST(FIND_CIRCLE_RADIUS_TEST, Assert_345)
