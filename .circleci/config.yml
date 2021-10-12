@@ -52,8 +52,8 @@ jobs:
       - run:
           name: gcovr
           command: |
-            mkdir tp_iz1/coverage
             cd tp_iz1/build
+            mkdir coverage
             cmake -DCMAKE_BUILD_TYPE=PROFILE ../
             make VERBOSE=1
             ./tp_iz1
