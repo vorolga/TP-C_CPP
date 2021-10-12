@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
         triangle.c = strtod(argv[3], NULL);
         circle.radius = find_circle_radius(triangle.a, triangle.b, triangle.c);
     } else {
+        int* f= (int*)malloc(5*sizeof(int));
         read_triangle_sides(&triangle);
         circle.radius = find_circle_radius(triangle.a, triangle.b, triangle.c);
     }
