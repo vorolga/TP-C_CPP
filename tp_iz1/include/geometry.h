@@ -15,6 +15,8 @@ struct Square {
     double side;
 };
 
+void read_triangle_sides(struct Triangle*);
+
 double find_circle_radius(double, double, double);
 
 // double find_square_side(double);

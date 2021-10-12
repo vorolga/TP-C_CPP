@@ -6,21 +6,7 @@ int main()
     struct Circle circle;
     struct Square square;
 
-    printf("Введите стороны треугольника\n");
-    if (scanf("%lf", &triangle.a) != 1) {
-        return 1;
-    }
-    if (scanf("%lf", &triangle.b) != 1) {
-        return 1;
-    }
-    if (scanf("%lf", &triangle.c) != 1) {
-        return 1;
-    }
-
-    if (triangle.a + triangle.b <= triangle.c || triangle.a + triangle.c <= triangle.b || triangle.c + triangle.b <= triangle.a) {
-        printf("Такого треугольника не существует\n");
-        return 1;
-    }
+    read_triangle_sides(&triangle);
 
     circle.radius = find_circle_radius(triangle.a, triangle.b, triangle.c);
 
