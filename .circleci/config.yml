@@ -84,4 +84,5 @@ jobs:
           name: Valgrind
           command: |
             valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test
+            valgrind --tool=memcheck --leak-check=yes tp_iz1/build/geometry_test 3 4 5
 
