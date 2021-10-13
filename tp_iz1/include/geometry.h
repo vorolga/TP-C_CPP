@@ -1,7 +1,6 @@
 #ifndef TP_IZ1_GEOMETRY_H
 #define TP_IZ1_GEOMETRY_H
 
-#include <assert.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
