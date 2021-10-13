@@ -13,13 +13,16 @@ int main(int argc, char* argv[])
         triangle.c = strtod(argv[3], NULL);
         circle.radius = find_circle_radius(triangle.a, triangle.b, triangle.c);
     } else {
-        read_triangle_sides(&triangle);
+        if (read_triangle_sides(&triangle)) {
+            return 1;
+        }
         circle.radius = find_circle_radius(triangle.a, triangle.b, triangle.c);
     }
 
-    // square.side = find_square_side(circle.radius);
-    square.side = 2 * circle.radius;
+    square.side = find_square_side(circle.radius);
 
-    printf("%f\n", square.side);
+    if (!printf("%f\n", square.side)) {
+        return 1;
+    }
     return 0;
 }

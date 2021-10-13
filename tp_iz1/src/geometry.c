@@ -1,14 +1,23 @@
 #include "geometry.h"
 
-void read_triangle_sides(struct Triangle* triangle) {
+int read_triangle_sides(struct Triangle* triangle) {
+    if (triangle == NULL) {
+        printf("Нулевой указатель\n");
+        return 1;
+    }
 
     printf("Введите стороны треугольника\n");
-    assert(scanf("%lf", &triangle->a) == 1);
-    assert(scanf("%lf", &triangle->b) == 1);
-    assert(scanf("%lf", &triangle->c) == 1);
+    if (scanf("%lf", &triangle->a) != 1 || scanf("%lf", &triangle->b) != 1 || scanf("%lf", &triangle->c) != 1) {
+        return 1;
+    }
 
     //Проверка существования треугольника
-    assert(triangle->a + triangle->b > triangle->c && triangle->a + triangle->c > triangle->b && triangle->c + triangle->b > triangle->a);
+    if (triangle->a + triangle->b <= triangle->c && triangle->a + triangle->c <= triangle->b && triangle->c + triangle->b <= triangle->a){
+        printf("Такого треугольника не существует\n");
+        return 1;
+    }
+
+    return  0;
 }
 
 double find_circle_radius(double a, double b, double c)
@@ -18,6 +27,6 @@ double find_circle_radius(double a, double b, double c)
     return a * b * c / (4 * triangle_square);
 }
 
-// double find_square_side(double radius) {
-//    return 2 * radius;
-//}
+ double find_square_side(double radius) {
+    return 2 * radius;
+}
