@@ -1,23 +1,21 @@
-cmake_minimum_required(VERSION 3.5.1)
+cmake_minimum_required(VERSION 3.18.4)
 project(tp_iz1 C CXX)
 
-set(CMAKE_C_STANDARD 23)
+set(CMAKE_C_STANDARD 11)
 
 set(LIB_SOURCE_FILES src/geometry.c)
 set(LIB_HEADERS_FILES include/geometry.h tests/geometry_test.cpp)
+
+include_directories(include)
 
 add_library(geometry STATIC ${LIB_SOURCE_FILES} ${LIB_HEADERS_FILES})
 
 set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage -fPIC -Werror -Wpedantic")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE 1)
-
 set(CMAKE_C_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage -fPIC -Werror -Wpedantic")
 set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
 
-
 set(SOURCE main.c)
-
-include_directories("tp_iz1/include/")
 
 add_executable(tp_iz1 src/main.c)
 target_link_libraries(tp_iz1 geometry m gcov -fprofile-arcs -ftest-coverage -fPIC)
