@@ -12,7 +12,7 @@ TEST(FIND_CIRCLE_RADIUS_TEST, Assert_345)
     triangle->b = 4;
     triangle->c = 5;
     EXPECT_NEAR(find_circle_radius(triangle), 2.5, 0.0000001);
-    delete [] triangle;
+    delete triangle;
 }
 
 TEST(FIND_CIRCLE_RADIUS_TEST, Assert_456)
@@ -23,7 +23,7 @@ TEST(FIND_CIRCLE_RADIUS_TEST, Assert_456)
     triangle->b = 5;
     triangle->c = 6;
     EXPECT_NEAR(find_circle_radius(triangle), 3.0237157, 0.0000001);
-    delete [] triangle;
+    delete triangle;
 }
 
 TEST(FIND_CIRCLE_RADIUS_TEST, Assert_567)
@@ -34,7 +34,7 @@ TEST(FIND_CIRCLE_RADIUS_TEST, Assert_567)
     triangle->b = 6;
     triangle->c = 7;
     EXPECT_NEAR(find_circle_radius(triangle), 3.5721725, 0.0000001);
-    delete [] triangle;
+    delete triangle;
 }
 
 TEST(FIND_CIRCLE_RADIUS_TEST, Assert_678)
@@ -45,7 +45,7 @@ TEST(FIND_CIRCLE_RADIUS_TEST, Assert_678)
     triangle->b = 7;
     triangle->c = 8;
     EXPECT_NEAR(find_circle_radius(triangle), 4.1311822, 0.0000001);
-    delete [] triangle;
+    delete triangle;
 }
 
 
