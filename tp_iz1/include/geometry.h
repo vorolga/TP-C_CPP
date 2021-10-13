@@ -22,7 +22,7 @@ struct Square {
 
 int read_triangle_sides(struct Triangle*);
 
-double find_circle_radius(double, double, double);
+double find_circle_radius(struct Triangle*);
 
 double find_square_side(double);
 

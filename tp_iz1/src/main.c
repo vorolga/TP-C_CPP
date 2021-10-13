@@ -11,12 +11,12 @@ int main(int argc, char* argv[])
         triangle.a = strtod(argv[1], NULL);
         triangle.b = strtod(argv[2], NULL);
         triangle.c = strtod(argv[3], NULL);
-        circle.radius = find_circle_radius(triangle.a, triangle.b, triangle.c);
+        circle.radius = find_circle_radius(&triangle);
     } else {
         if (read_triangle_sides(&triangle)) {
             return 1;
         }
-        circle.radius = find_circle_radius(triangle.a, triangle.b, triangle.c);
+        circle.radius = find_circle_radius(&triangle);
     }
 
     square.side = find_square_side(circle.radius);

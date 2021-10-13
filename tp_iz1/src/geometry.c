@@ -1,7 +1,7 @@
 #include "geometry.h"
 
 int read_triangle_sides(struct Triangle* triangle) {
-    if (triangle == NULL) {
+    if (!triangle) {
         printf("Нулевой указатель\n");
         return 1;
     }
@@ -20,11 +20,15 @@ int read_triangle_sides(struct Triangle* triangle) {
     return  0;
 }
 
-double find_circle_radius(double a, double b, double c)
+double find_circle_radius(struct Triangle* triangle)
 {
-    double p = (a + b + c) / 2; //полупериметр
-    double triangle_square = sqrt(p * (p - a) * (p - b) * (p - c));
-    return a * b * c / (4 * triangle_square);
+    if (!triangle) {
+        printf("Нулевой указатель\n");
+        return 1;
+    }
+    double p = (triangle->a + triangle->b + triangle->c) / 2; //полупериметр
+    double triangle_square = sqrt(p * (p - triangle->a) * (p - triangle->b) * (p - triangle->c));
+    return triangle->a * triangle->b * triangle->c / (4 * triangle_square);
 }
 
  double find_square_side(double radius) {
