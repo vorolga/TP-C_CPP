@@ -1,5 +1,8 @@
 #include "geometry.h"
 
+#include <math.h>
+#include <stdio.h>
+
 int read_triangle_sides(struct Triangle* triangle) {
     if (!triangle) {
         printf("Нулевой указатель\n");
