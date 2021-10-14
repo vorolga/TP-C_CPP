@@ -1,0 +1,89 @@
+version: 2.1
+on:
+  push:
+    branches:
+      - hw-1
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:202104-01
+
+    steps:
+      - checkout
+      - run:
+          name: Installing GCC
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y gcc g++
+      - run:
+          name: Install CMAKE
+          command: |
+            sudo apt remove --purge cmake
+            hash -r
+            sudo snap install cmake --classic
+      - run:
+          name: Install Valgrind
+          command: sudo apt-get install -y valgrind
+      - run:
+          name: Install GoogleTests
+          command: |
+            sudo apt-get install -y libgtest-dev
+            cd /usr/src/gtest
+            sudo cmake .
+            sudo make
+            sudo cp -R /usr/src/gtest/*.a /usr/lib/x86_64-linux-gnu
+      - run:
+          name: Install CppCheck
+          command: sudo apt-get install -y cppcheck
+      - run:
+          name: Install gcovr
+          command: |
+            sudo apt-get install -y gcovr
+      - run:
+          name: Install clang-format
+          command: sudo apt install -y clang-format
+      - run:
+          name: Make
+          command: |
+            mkdir tp_iz1/build
+            cd tp_iz1/build
+            cmake ../
+            make
+      - run:
+          name: gcovr
+          command: |
+            cd tp_iz1/build
+            mkdir coverage
+            cmake -DCMAKE_BUILD_TYPE=PROFILE ../
+            make VERBOSE=1
+            ./tp_iz1 3 4 5
+            ./geometry_test
+            gcovr -r ../ --html -o coverage/coverage.html --html-details
+      - store_artifacts:
+          path: tp_iz1/build/coverage/
+      - run:
+          name: clang-format
+          command: |
+            cd tp_iz1/src
+            clang-format -i -style=WebKit *.c
+            cd ../include
+            clang-format -i -style=WebKit *.h
+            cd ../tests
+            clang-format -i -style=WebKit *.cpp
+      - run:
+          name: Linter
+          command: |
+            cd tp_iz1/src
+            cppcheck ./ --inconclusive --enable=all --language=c --suppress=missingIncludeSystem --error-exitcode=1
+      - run:
+          name: Test
+          command: |
+            cd tp_iz1/build
+            ./geometry_test
+      - run:
+          name: Valgrind
+          command: |
+            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 tp_iz1/build/geometry_test
+            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 tp_iz1/build/tp_iz1 3 4 5
+
