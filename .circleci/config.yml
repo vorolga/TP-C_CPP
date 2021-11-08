@@ -8,6 +8,7 @@ jobs:
   build:
     machine:
       image: ubuntu-1604:202104-01
+    resouce_class: large
 
     steps:
       - checkout
