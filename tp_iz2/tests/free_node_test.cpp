@@ -6,7 +6,7 @@ extern "C" {
 
 TEST(FREE_NODE_TEST, null_node)
 {
-    Node* list_position_experience = nullptr;
+    Node* list_position_experience = NULL;
 
     EXPECT_EQ(free_node(&list_position_experience), 0);
 }

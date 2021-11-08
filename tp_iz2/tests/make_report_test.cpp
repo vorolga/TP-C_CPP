@@ -6,7 +6,7 @@ extern "C" {
 
 TEST(MAKE_REPORT_TEST, null_node)
 {
-    Node* list_position_experience = nullptr;
+    Node* list_position_experience = NULL;
 
     EXPECT_EQ(make_report(list_position_experience), 1);
 }
