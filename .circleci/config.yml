@@ -100,5 +100,11 @@ jobs:
           name: Test
           command: |
             cd tp_iz2/build
+            cmake -DUSE_PARALLEL=0 ../
+            make
+            ./make_report_test
+            ./stress_test
+            cmake -DUSE_PARALLEL=1 ../
+            make
             ./make_report_test
             ./stress_test
