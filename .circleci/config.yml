@@ -94,7 +94,7 @@ jobs:
       - run:
           name: Test
           command: |
-            cd tp_iz1/build
+            cd tp_iz2/build
             ./make_report_test
             ./stress_test
       - run:
