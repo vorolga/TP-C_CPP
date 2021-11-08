@@ -57,7 +57,7 @@ jobs:
             mkdir coverage
             cmake -DCMAKE_BUILD_TYPE=PROFILE ../
             make VERBOSE=1
-            ./tp_iz2
+            ./tp_iz2 2 3
             ./stress_test
             ./make_report_test
             gcovr -r ../ --html -o coverage/coverage.html --html-details
@@ -98,4 +98,4 @@ jobs:
           command: |
             valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 tp_iz1/build/make_report_test
             valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 tp_iz1/build/stress_test
-            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 tp_iz1/build/tp_iz2
+            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 tp_iz1/build/tp_iz2 2 3
