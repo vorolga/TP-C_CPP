@@ -97,9 +97,3 @@ jobs:
             cd tp_iz2/build
             ./make_report_test
             ./stress_test
-      - run:
-          name: Valgrind
-          command: |
-            valgrind --tool=memcheck --leak-check=yes -v tp_iz2/build/make_report_test
-            valgrind --tool=memcheck --leak-check=yes -v tp_iz2/build/stress_test
-            valgrind --tool=memcheck --leak-check=yes -v tp_iz2/build/tp_iz2 2 3
