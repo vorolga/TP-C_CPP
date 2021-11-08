@@ -1,9 +1,9 @@
 #include "main_func.h"
 #include <stdlib.h>
 
-int main(int argc, char* argv)
+int main(int argc, char** argv)
 {
-    int steps[2];
+    long steps[2];
     if (argc > 1) {
         steps[0] = strtod(argv[1], NULL);
         steps[1] = strtod(argv[2], NULL);
