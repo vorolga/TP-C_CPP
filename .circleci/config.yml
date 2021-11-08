@@ -100,6 +100,6 @@ jobs:
       - run:
           name: Valgrind
           command: |
-            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 -v tp_iz2/build/make_report_test
-            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 -v tp_iz2/build/stress_test
-            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 -v tp_iz2/build/tp_iz2 2 3
+            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 -v ./make_report_test
+            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 -v ./stress_test
+            valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 -v ./tp_iz2 2 3
