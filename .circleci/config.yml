@@ -9,8 +9,6 @@ jobs:
     machine:
       image: ubuntu-1604:202104-01
 
-    - resouce_class: large
-
     steps:
       - checkout
       - run:
@@ -67,11 +65,6 @@ jobs:
             ./make_report_test
             gcovr -r ../ --html -o coverage/coverage_static.html --html-details
             cmake -DCMAKE_BUILD_TYPE=PROFILE  -DUSE_PARALLEL=1 ../
-            make VERBOSE=1
-            ./tp_iz2 2 3
-            ./stress_test
-            ./make_report_test
-            gcovr -r ../ --html -o coverage/coverage_parallel.html --html-details
       - store_artifacts:
           path: tp_iz2/build/coverage/
       - run:
