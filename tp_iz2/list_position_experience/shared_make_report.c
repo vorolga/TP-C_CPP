@@ -61,6 +61,7 @@ int make_report(const Node* head)
                     end = node->employeeArr->real_size / number_of_processors * (child + 1);
                 }
 
+
                 sum += get_sum(node->employeeArr, start, end);
 
                 for (ssize_t nwritten = 0; nwritten != sizeof(sum);) {
@@ -80,6 +81,7 @@ int make_report(const Node* head)
 
         FILE* fp = fdopen(fd[0], "rb");
         int sums[number_of_processors];
+        printf("%ld ", fread(sums, sizeof(*sums), number_of_processors, fp));
         if (fp && fread(sums, sizeof(*sums), number_of_processors, fp) == (size_t)number_of_processors) {
             double avg_salary = (double)get_sum_int(sums, number_of_processors) / (double)node->employeeArr->real_size;
             printf("Position: %-10s   Experience: %-10s   Average salary: %f\n", node->position, node->experience,

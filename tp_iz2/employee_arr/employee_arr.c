@@ -90,8 +90,13 @@ int average_salary(EmployeeArr* employeeArr)
 int get_sum(EmployeeArr* employeeArr, size_t start, size_t end)
 {
     if (!employeeArr) {
-        exit(EXIT_FAILURE);
+        return -2;
     }
+
+    if(start > employeeArr->real_size || end > employeeArr->real_size || start >= end) {
+        return -2;
+    }
+
     int sum_salary = 0;
     for (size_t i = start; i < end; ++i) {
         sum_salary = sum_salary + employeeArr->employee[i].salary;
