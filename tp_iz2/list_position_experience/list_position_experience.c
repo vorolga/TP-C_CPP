@@ -6,49 +6,49 @@ char* experience_interval(const short experience)
 {
     if (experience < 1) {
         return "<1";
-    } else {
-        if (experience <= 2) {
-            return "1-2";
-        } else {
-            if (experience <= 5) {
-                return "3-5";
-            } else {
-                if (experience <= 10) {
-                    return "6-10";
-                } else {
-                    if (experience <= 20) {
-                        return "11-20";
-                    } else {
-                        return ">20";
-                    }
-                }
-            }
-        }
     }
+
+    if (experience <= 2) {
+        return "1-2";
+    }
+
+    if (experience <= 5) {
+        return "3-5";
+    }
+
+    if (experience <= 10) {
+        return "6-10";
+    }
+
+    if (experience <= 20) {
+        return "11-20";
+    }
+
+    return ">20";
 }
 
 Node* create_node(const char* position, const short experience)
 {
-    if (position == NULL) {
+    if (!position) {
         return NULL;
     }
 
     Node* head = (Node*)malloc(sizeof(Node));
-    if (head == NULL) {
+    if (!head) {
         return NULL;
     }
 
     head->next = NULL;
 
     head->position = (char*)malloc((strlen(position) + 1) * sizeof(char));
-    if (head->position == NULL) {
+    if (!head->position) {
         free(head);
         return NULL;
     }
     strncpy(head->position, position, strlen(position) + 1);
 
     head->experience = (char*)malloc((strlen(experience_interval(experience)) + 1) * sizeof(char));
-    if (head->experience == NULL) {
+    if (!head->experience) {
         free(head->position);
         free(head);
         return NULL;
@@ -62,7 +62,7 @@ Node* create_node(const char* position, const short experience)
 
 int read_from_file(FILE* file, Node** head)
 {
-    if (file == NULL || head == NULL) {
+    if (!file || !head) {
         return 1;
     }
 
@@ -74,12 +74,12 @@ int read_from_file(FILE* file, Node** head)
             }
             return 1;
         }
-        if (*head == NULL) {
+        if (!(*head)) {
             *head = create_node(employee.position, employee.experience);
             add_element((*head)->employeeArr, &employee);
         } else {
             Node* node = find_node(*head, employee.position, employee.experience);
-            if (node == NULL) {
+            if (!node) {
                 if (add_node(head, employee.position, employee.experience)) {
                     return 1;
                 }
@@ -94,25 +94,25 @@ int read_from_file(FILE* file, Node** head)
 
 int add_node(Node** head, const char* position, short experience)
 {
-    if (*head == NULL || position == NULL) {
+    if (!(*head) || !position) {
         return 1;
     }
 
     Node* tmp = (Node*)malloc(sizeof(Node));
-    if (tmp == NULL) {
+    if (!tmp) {
         return 1;
     }
 
     tmp->next = *head;
     tmp->position = (char*)malloc(sizeof(char) * (strlen(position) + 1));
-    if (tmp->position == NULL) {
+    if (!tmp->position) {
         free(tmp);
         return 1;
     }
     strncpy(tmp->position, position, strlen(position) + 1);
 
     tmp->experience = (char*)malloc(sizeof(char) * (strlen(experience_interval(experience)) + 1));
-    if (tmp->experience == NULL) {
+    if (!tmp->experience) {
         free(tmp->position);
         free(tmp);
         return 1;
@@ -120,7 +120,7 @@ int add_node(Node** head, const char* position, short experience)
     strncpy(tmp->experience, experience_interval(experience), strlen(experience_interval(experience)) + 1);
 
     tmp->employeeArr = create_employee_arr();
-    if (tmp->employeeArr == NULL) {
+    if (!tmp->employeeArr) {
         free(tmp->position);
         free(tmp->experience);
         free(tmp);
@@ -134,13 +134,13 @@ int add_node(Node** head, const char* position, short experience)
 
 Node* find_node(const Node* head, const char* position, short experience)
 {
-    if (head == NULL || position == NULL) {
+    if (!head || !position) {
         return NULL;
     }
 
     Node* find_need_node = (Node*)head;
 
-    while (find_need_node != NULL) {
+    while (find_need_node) {
         if (strncmp(find_need_node->position, position, strlen(position)) == 0
             && strncmp(find_need_node->experience, experience_interval(experience), strlen(experience_interval(experience))) == 0) {
             return find_need_node;
@@ -153,13 +153,13 @@ Node* find_node(const Node* head, const char* position, short experience)
 
 int free_node(Node** head)
 {
-    if (head == NULL) {
+    if (!head) {
         return 1;
     }
 
     Node* tmp = NULL;
 
-    while (*head != NULL) {
+    while (*head) {
         tmp = (*head);
         *head = (*head)->next;
         free(tmp->position);

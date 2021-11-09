@@ -8,8 +8,7 @@
 
 int get_sum(EmployeeArr* employeeArr, size_t start, size_t end)
 {
-    if (employeeArr == NULL) {
-//        perror("arr null");
+    if (!employeeArr) {
         exit(EXIT_FAILURE);
     }
     int sum_salary = 0;
@@ -21,8 +20,7 @@ int get_sum(EmployeeArr* employeeArr, size_t start, size_t end)
 
 int get_sum_int(const int* arr, size_t size)
 {
-    if (arr == NULL) {
-//        perror("int arr null");
+    if (!arr) {
         exit(EXIT_FAILURE);
     }
     int sum_salary = 0;
@@ -35,8 +33,7 @@ int get_sum_int(const int* arr, size_t size)
 
 int make_report(const Node* head)
 {
-    if (head == NULL) {
-//        perror("node null");
+    if (!head) {
         return 1;
     }
 
@@ -45,7 +42,6 @@ int make_report(const Node* head)
     const long number_of_processors = sysconf(_SC_NPROCESSORS_ONLN);
 
     if (number_of_processors == -1) {
-//        perror("sysconf");
         return 1;
     }
 
@@ -53,17 +49,15 @@ int make_report(const Node* head)
 
     int exit_status = EXIT_SUCCESS;
 
-    while (node != NULL) {
+    while (node) {
         int fd[2];
 
         if (pipe(fd) < 0) {
-//            perror("pipe");
             return 1;
         }
 
         for (size_t child = 0; child < number_of_processors; child++) {
             if ((pid[child] = fork()) < 0) {
-//                perror("fork");
                 return 1;
             } else if (pid[child] == 0) {
                 int sum = 0;
@@ -85,8 +79,7 @@ int make_report(const Node* head)
                     ssize_t n_bytes = write(fd[1], &sum + nwritten, sizeof(sum) - nwritten);
                     if (n_bytes != -1) {
                         nwritten += n_bytes;
-                    } else if (errno != EINTR) { // error
-//                        perror("write");
+                    } else if (errno != EINTR) {
                         _exit(EXIT_FAILURE);
                     }
                 }
@@ -99,7 +92,7 @@ int make_report(const Node* head)
 
         FILE* fp = fdopen(fd[0], "rb");
         int sums[number_of_processors];
-        if (fp != NULL && fread(sums, sizeof(*sums), number_of_processors, fp) == (size_t)number_of_processors) {
+        if (fp && fread(sums, sizeof(*sums), number_of_processors, fp) == (size_t)number_of_processors) {
             double avg_salary = (double)get_sum_int(sums, number_of_processors) / (double)node->employeeArr->real_size;
             printf("Position: %-10s   Experience: %-10s   Average salary: %f\n", node->position, node->experience,
                 avg_salary);

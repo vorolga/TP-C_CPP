@@ -5,11 +5,11 @@
 typedef struct Employee {
     char* name;
     char* surname;
-    short age;
     char* position;
-    short experience;
-    int salary;
     char* gender;
+    int salary;
+    short age;
+    short experience;
 } Employee;
 
 int read_employee_from_file(FILE*, Employee*);

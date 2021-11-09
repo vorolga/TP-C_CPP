@@ -4,15 +4,15 @@
 EmployeeArr* create_employee_arr()
 {
     EmployeeArr* employeeArr = (EmployeeArr*)malloc(sizeof(EmployeeArr));
-    if (employeeArr == NULL) {
+    if (!employeeArr) {
         return NULL;
     }
 
     employeeArr->size = 10;
     employeeArr->real_size = 0;
 
-    employeeArr->employee = (Employee*)malloc(10 * sizeof(Employee));
-    if (employeeArr->employee == NULL) {
+    employeeArr->employee = (Employee*)malloc(employeeArr->size * sizeof(Employee));
+    if (!employeeArr->employee) {
         free(employeeArr);
         return NULL;
     }
@@ -21,13 +21,13 @@ EmployeeArr* create_employee_arr()
 
 int resize(EmployeeArr* employeeArr)
 {
-    if (employeeArr == NULL) {
+    if (!employeeArr) {
         return 1;
     }
 
     employeeArr->employee = (Employee*)realloc(employeeArr->employee, 2 * employeeArr->size * sizeof(Employee));
 
-    if (employeeArr->employee == NULL) {
+    if (!employeeArr->employee) {
         return 1;
     }
 
@@ -38,7 +38,7 @@ int resize(EmployeeArr* employeeArr)
 
 int add_element(EmployeeArr* employeeArr, const Employee* employee)
 {
-    if (employeeArr == NULL || employee == NULL) {
+    if (!employeeArr || !employee) {
         return 1;
     }
 
@@ -54,11 +54,11 @@ int add_element(EmployeeArr* employeeArr, const Employee* employee)
 
 int free_employee_arr(EmployeeArr* employeeArr)
 {
-    if (employeeArr == NULL) {
+    if (!employeeArr) {
         return 1;
     }
 
-    for (size_t i = 0; i < employeeArr->real_size; i++) {
+    for (size_t i = 0; i < employeeArr->real_size; ++i) {
         free(employeeArr->employee[i].name);
         free(employeeArr->employee[i].surname);
         free(employeeArr->employee[i].position);
@@ -74,7 +74,7 @@ int free_employee_arr(EmployeeArr* employeeArr)
 
 int average_salary(EmployeeArr* employeeArr)
 {
-    if (employeeArr == NULL) {
+    if (!employeeArr) {
         return 1;
     }
     int sum_salary = 0;

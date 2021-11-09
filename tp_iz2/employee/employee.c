@@ -4,7 +4,7 @@
 
 int read_employee_from_file(FILE* file, Employee* employee)
 {
-    if (file == NULL || employee == NULL) {
+    if (!file || !employee) {
         return 1;
     }
 
@@ -15,14 +15,14 @@ int read_employee_from_file(FILE* file, Employee* employee)
         return 1;
     }
     employee->name = (char*)malloc(strlen(buff) + 1);
-    if (employee->name == NULL) {
+    if (!employee->name) {
         return 1;
     }
     strncpy(employee->name, buff, strlen(buff) + 1);
 
     fscanf(file, "%19s", buff);
     employee->surname = (char*)malloc(strlen(buff) + 1);
-    if (employee->surname == NULL) {
+    if (!employee->surname) {
         free(employee->name);
         return 1;
     }
@@ -30,7 +30,7 @@ int read_employee_from_file(FILE* file, Employee* employee)
 
     fscanf(file, "%19s", buff);
     employee->gender = (char*)malloc(strlen(buff) + 1);
-    if (employee->gender == NULL) {
+    if (!employee->gender) {
         free(employee->name);
         free(employee->surname);
         return 1;
@@ -43,7 +43,7 @@ int read_employee_from_file(FILE* file, Employee* employee)
 
     fscanf(file, "%19s", buff);
     employee->position = (char*)malloc(strlen(buff) + 1);
-    if (employee->position == NULL) {
+    if (!employee->position) {
         free(employee->name);
         free(employee->surname);
         free(employee->gender);

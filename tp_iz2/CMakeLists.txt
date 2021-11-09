@@ -43,5 +43,5 @@ enable_testing()
 find_package(GTest REQUIRED)
 
 include_directories(${GTEST_INCLUDE_DIRS})
-add_executable(make_report_test tests/read_file_test.cpp tests/make_report_test.cpp tests/free_node_test.cpp tests/main.cpp ${LIB_SOURCE_FILES} ${LIB_SOURCE})
+add_executable(make_report_test tests/read_file_test.cpp tests/make_report_test.cpp tests/free_node_test.cpp tests/add_employee_test.cpp tests/main.cpp ${LIB_SOURCE_FILES} ${LIB_SOURCE})
 target_link_libraries(make_report_test ${GTEST_LIBARIES} -lpthread -lgtest -lgtest_main)

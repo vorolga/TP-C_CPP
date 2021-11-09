@@ -6,7 +6,6 @@
 typedef struct Node {
     struct Node* next;
     char* position;
-    //short experience;
     char* experience;
     EmployeeArr* employeeArr;
 } Node;
