@@ -1,0 +1,110 @@
+version: 2.1
+on:
+  push:
+    branches:
+      - hw-2
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:202104-01
+
+    steps:
+      - checkout
+      - run:
+          name: Installing GCC
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y gcc g++
+      - run:
+          name: Install CMAKE
+          command: |
+            sudo apt remove --purge cmake
+            hash -r
+            sudo snap install cmake --classic
+      - run:
+          name: Install Valgrind
+          command: sudo apt-get install -y valgrind
+      - run:
+          name: Install GoogleTests
+          command: |
+            sudo apt-get install -y libgtest-dev
+            cd /usr/src/gtest
+            sudo cmake .
+            sudo make
+            sudo cp -R /usr/src/gtest/*.a /usr/lib/x86_64-linux-gnu
+      - run:
+          name: Install CppCheck
+          command: sudo apt-get install -y cppcheck
+      - run:
+          name: Install gcovr
+          command: |
+            sudo apt-get install -y gcovr
+      - run:
+          name: Install clang-format
+          command: sudo apt install -y clang-format
+      - run:
+          name: Make
+          command: |
+            mkdir tp_iz2/build
+            cd tp_iz2/build
+            cmake -DUSE_PARALLEL=0 ../
+            make
+            cmake -DUSE_PARALLEL=1 ../
+            make
+
+      - run:
+          name: gcovr
+          command: |
+            cd tp_iz2/build
+            mkdir coverage
+            cmake -DCMAKE_BUILD_TYPE=PROFILE  -DUSE_PARALLEL=0 ../
+            make VERBOSE=1
+            ./tp_iz2 2 3
+            ./stress_test
+            ./make_report_test
+            gcovr -r ../
+            cmake -DCMAKE_BUILD_TYPE=PROFILE  -DUSE_PARALLEL=1 ../
+            make VERBOSE=1
+            ./tp_iz2 2 3
+            ./stress_test
+            ./make_report_test
+            gcovr -r ../ --html -o coverage/coverage.html --html-details
+      - store_artifacts:
+          path: tp_iz2/build/coverage/
+      - run:
+          name: clang-format
+          command: |
+            cd tp_iz2/src
+            clang-format -i -style=WebKit *.c
+            cd ../list_position_experience
+            clang-format -i -style=WebKit *.h
+            clang-format -i -style=WebKit *.c
+            cd ../include_main_func
+            clang-format -i -style=WebKit *.h
+            clang-format -i -style=WebKit *.c
+            cd ../employee_arr
+            clang-format -i -style=WebKit *.h
+            clang-format -i -style=WebKit *.c
+            cd ../employee
+            clang-format -i -style=WebKit *.h
+            clang-format -i -style=WebKit *.c
+            cd ../tests
+            clang-format -i -style=WebKit *.cpp
+      - run:
+          name: Linter
+          command: |
+            cd tp_iz2/src
+            cppcheck ./ --inconclusive --enable=all --language=c --suppress=missingIncludeSystem --error-exitcode=1
+      - run:
+          name: Test
+          command: |
+            cd tp_iz2/build
+            cmake -DUSE_PARALLEL=0 ../
+            make
+            ./make_report_test
+            ./stress_test
+            cmake -DUSE_PARALLEL=1 ../
+            make
+            ./make_report_test
+            ./stress_test
