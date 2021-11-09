@@ -108,7 +108,7 @@ TEST(GET_SUM_TEST, big_start)
 
     add_element(employee_arr, &employee);
 
-    EXPECT_EQ(get_sum(employee_arr, 10, 1), 80000);
+    EXPECT_EQ(get_sum(employee_arr, 10, 1), -2);
 
     free_employee_arr(employee_arr);
 }
