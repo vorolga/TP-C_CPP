@@ -1,5 +1,5 @@
-[![CircleCI](https://img.shields.io/badge/build-success-ff69b4)](https://app.circleci.com/pipelines/github/vorolga/TP-C_CPP/188/workflows/a7d5eebb-4318-41b4-a852-8d902a20a43f/jobs/196)
-[![CircleCI](https://img.shields.io/badge/coverage-62.6%25-9cf)](https://196-415650598-gh.circle-artifacts.com/0/tp_iz2/build/coverage/coverage.html)
+[![CircleCI](https://img.shields.io/badge/build-success-ff69b4)](https://app.circleci.com/pipelines/github/vorolga/TP-C_CPP/197/workflows/ea3e56f6-5317-4a77-91d8-b5057e2c2c89/jobs/205)
+[![CircleCI](https://img.shields.io/badge/coverage-69.1%25-9cf)](https://205-415650598-gh.circle-artifacts.com/0/tp_iz2/build/coverage/coverage.html)
 
 #ДЗ2 - Воронова Ольга WEB-11  
 
