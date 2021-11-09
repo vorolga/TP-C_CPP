@@ -10,10 +10,6 @@ TEST(READ_FILE_TEST, wrong_filename)
     Node* list_position_experience = NULL;
 
     EXPECT_EQ(read_file(&list_position_experience, filename), 1);
-
-    if (list_position_experience) {
-        free_node(&list_position_experience);
-    }
 }
 
 TEST(READ_FILE_TEST, correct_filename)
