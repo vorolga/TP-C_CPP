@@ -17,4 +17,6 @@ int free_employee_arr(EmployeeArr*);
 
 int average_salary(EmployeeArr*);
 
+int get_sum(EmployeeArr*, size_t, size_t);
+
 #endif //TP_IZ2_EMPLOYEE_ARR_H

@@ -6,19 +6,7 @@
 
 #define PROCNAME "shared-make-report"
 
-int get_sum(EmployeeArr* employeeArr, size_t start, size_t end)
-{
-    if (!employeeArr) {
-        exit(EXIT_FAILURE);
-    }
-    int sum_salary = 0;
-    for (size_t i = start; i < end; i++) {
-        sum_salary = sum_salary + employeeArr->employee[i].salary;
-    }
-    return sum_salary;
-}
-
-int get_sum_int(const int* arr, size_t size)
+static int get_sum_int(const int* arr, size_t size)
 {
     if (!arr) {
         exit(EXIT_FAILURE);
